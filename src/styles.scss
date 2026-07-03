@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+// Clears the fixed nav bar so anchor-link jumps (nav clicks) don't land a
+// section's heading underneath it.
+section[id] {
+  scroll-margin-top: 120px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+// Used by the appScrollReveal directive (src/app/shared/directives/scroll-reveal)
+// to float elements in as they scroll into view and back out as they scroll
+// past. The directive itself skips adding these classes under reduced motion,
+// so no reduced-motion override is needed here.
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
