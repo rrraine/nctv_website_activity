@@ -1,0 +1,51 @@
+<nav class="nav-bar" aria-label="Primary" (keydown.escape)="closeMenu()">
+  <a href="#home" class="nav-bar__logo-link" aria-label="N-Compass TV home">
+    <img
+      ngSrc="images/nav/logo.png"
+      width="196"
+      height="35"
+      priority
+      alt="N-Compass TV"
+      class="nav-bar__logo"
+    />
+  </a>
+
+  <button
+    #menuToggle
+    type="button"
+    class="nav-bar__toggle"
+    [attr.aria-expanded]="isMenuOpen()"
+    aria-controls="nav-bar-panel"
+    [attr.aria-label]="isMenuOpen() ? 'Close menu' : 'Open menu'"
+    (click)="toggleMenu()"
+  >
+    <svg class="nav-bar__toggle-icon" aria-hidden="true">
+      <use [attr.href]="'icons/icon-sprite.svg#icon-' + (isMenuOpen() ? 'close' : 'menu')"></use>
+    </svg>
+  </button>
+
+  <div id="nav-bar-panel" class="nav-bar__panel" [class.nav-bar__panel--open]="isMenuOpen()">
+    <ul class="nav-bar__links">
+      @for (link of navLinks; track link.href) {
+        <li>
+          <a
+            class="nav-bar__link"
+            [class.nav-bar__link--active]="isActive(link)"
+            [href]="link.href"
+            [attr.aria-current]="isActive(link) ? 'page' : null"
+            (click)="onLinkClick(link)"
+          >
+            {{ link.label }}
+          </a>
+        </li>
+      }
+    </ul>
+
+    <a class="nav-bar__cta" href="tel:+17207639094">
+      <span class="nav-bar__cta-text">Call Us Today!</span>
+      <svg class="nav-bar__cta-icon" aria-hidden="true">
+        <use href="icons/icon-sprite.svg#icon-call"></use>
+      </svg>
+    </a>
+  </div>
+</nav>

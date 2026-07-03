@@ -1,0 +1,7 @@
+.youtube-embed {
+  @apply relative aspect-video w-full overflow-hidden rounded-2xl bg-black;
+
+  &__frame {
+    @apply absolute inset-0 h-full w-full border-0;
+  }
+}

@@ -1,0 +1,33 @@
+.contact-modal {
+  &__header {
+    @apply flex w-full items-center justify-between gap-4;
+  }
+
+  &__title {
+    @apply m-0 font-urbanist text-2xl font-bold text-black;
+  }
+
+  &__close {
+    @apply flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full text-black transition-colors duration-200 hover:bg-black/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7dc931];
+  }
+
+  &__close-icon {
+    @apply h-5 w-5;
+  }
+
+  &__value {
+    @apply m-0 mt-4 font-inter text-lg font-medium text-black;
+  }
+
+  &__actions {
+    @apply mt-6 flex flex-wrap gap-3;
+  }
+
+  &__action {
+    @apply inline-flex cursor-pointer items-center justify-center whitespace-nowrap rounded-2xl bg-[#7dc931] px-6 py-3 font-inter text-base font-medium text-black no-underline transition-opacity duration-200 hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black active:scale-95;
+
+    &--copy {
+      @apply bg-black/5;
+    }
+  }
+}

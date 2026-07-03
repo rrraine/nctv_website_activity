@@ -1,0 +1,7 @@
+.section-tag {
+  @apply m-0 inline-flex items-center justify-center whitespace-nowrap rounded-2xl bg-white px-9 py-2 font-inter text-[13px] font-normal text-black;
+
+  &--muted {
+    background-color: rgba(216, 218, 224, 0.61);
+  }
+}
