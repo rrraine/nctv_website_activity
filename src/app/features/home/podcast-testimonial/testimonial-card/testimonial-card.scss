@@ -1,0 +1,84 @@
+.testimonial-card {
+  // Taller than the original 497px: at that height, the quote+attribution text
+  // block (~290-310px of real content) had nowhere to sit but overlapping the
+  // subject's face — there wasn't enough room below it for both a clear portrait
+  // and a legible text block. The extra height gives the photo a clean top zone
+  // and the text a clean bottom zone with no overlap.
+  @apply relative flex h-[580px] w-full max-w-[401px] shrink-0 flex-col overflow-hidden rounded-2xl bg-white transition-transform duration-300 ease-out;
+
+  box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.25);
+
+  &:hover,
+
+  &:focus-within {
+    @apply -translate-y-2;
+
+    box-shadow: 0px 16px 28px 0px rgba(0, 0, 0, 0.3);
+  }
+
+  &__image {
+    // object-top keeps the subject's face fully in frame, cropping from the
+    // bottom (shoulders/chest) instead of the top if the photo runs long.
+    @apply object-cover object-top;
+  }
+
+  // A card-height-relative gradient (fixed % stops) can't account for quote
+  // length: a longer quote pushes this mt-auto block further up the card, and
+  // fixed stops that looked fine for a short quote leave a long one only
+  // partially faded — landing the quote mark on the subject's face. The fix is
+  // to give the block its own guaranteed-opaque background (with a short fade
+  // at just its top edge) so it's always fully legible no matter how tall it is.
+  
+  // &__body {
+  //   @apply relative z-10 mt-auto flex flex-col items-start gap-4 px-8 pb-8 pt-9 text-left;
+
+  //   background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0px, #ffffff 48px, #ffffff 100%);
+  // }
+
+ &__body {
+  @apply relative z-10 mt-auto flex flex-col items-start gap-4 px-8 pb-8 pt-9 text-left;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 15%,
+    rgba(255, 255, 255, 0.5) 25%,
+    #ffffff 50%,
+    #ffffff 100%
+  );
+}
+
+  &__quote-mark {
+    @apply m-0 font-inter text-[32px] leading-none text-black;
+
+    // Pulls the quote text up right under the mark instead of the uniform
+    // body gap, which read as too much dead space between them.
+    margin-bottom: -24px;
+  }
+
+  &__quote {
+    @apply m-0 font-inter text-sm font-normal leading-[22px] text-black;
+    margin-bottom: -4px;
+  }
+
+  &__attribution {
+    @apply flex flex-col items-start gap-0.5;
+  }
+
+  // Name is the primary identifier, so it reads larger than the location.
+  &__name {
+    @apply m-0 font-urbanist text-lg font-bold text-black text-[20px];
+  }
+
+  &__location {
+    @apply m-0 font-urbanist text-sm font-medium text-black;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+
+    &:hover,
+    &:focus-within {
+      transform: none;
+    }
+  }
+}

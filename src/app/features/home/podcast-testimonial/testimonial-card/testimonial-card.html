@@ -1,0 +1,19 @@
+<article class="testimonial-card">
+  <img
+    [ngSrc]="testimonial().image"
+    fill
+    priority="false"
+    class="testimonial-card__image"
+    [alt]="testimonial().name + ' portrait'"
+  />
+
+  <div class="testimonial-card__body">
+    <p class="testimonial-card__quote-mark" aria-hidden="true">&ldquo;</p>
+    <blockquote class="testimonial-card__quote">{{ testimonial().quote }}</blockquote>
+
+    <footer class="testimonial-card__attribution">
+      <p class="testimonial-card__name">{{ testimonial().name }}</p>
+      <p class="testimonial-card__location">{{ testimonial().location }}</p>
+    </footer>
+  </div>
+</article>

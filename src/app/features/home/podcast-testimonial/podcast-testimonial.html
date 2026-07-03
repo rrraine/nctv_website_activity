@@ -1,0 +1,30 @@
+<section class="podcast-testimonial" id="podcast">
+  <div class="podcast-testimonial__block">
+    <app-section-tag label="Podcast" tone="muted" appScrollReveal />
+
+    <app-podcast-card
+      appScrollReveal
+      coverImage="images/podcast/cover.png"
+      coverAlt="About Beyond the Boards podcast cover art"
+      kicker="Listen to our Podcast"
+      title="About Beyond the Boards"
+      description="Beyond The Boards explores the past, present, and future of Digital Out-of-Home—revealing how digital signage captures attention, shapes behavior, and transforms public spaces. Tune in and see what’s beyond the boards."
+      (spotifyClick)="spotifyClick.emit()"
+      (appleMusicClick)="appleMusicClick.emit()"
+    />
+  </div>
+
+  <div class="podcast-testimonial__block">
+    <div class="podcast-testimonial__intro" appScrollReveal>
+      <app-section-tag label="Testimonial" tone="muted" />
+      <p class="podcast-testimonial__eyebrow">Dealer Stories</p>
+      <h2 id="testimonial-heading" class="podcast-testimonial__heading">Real People. Real Results.</h2>
+    </div>
+
+    <div class="podcast-testimonial__grid" aria-labelledby="testimonial-heading">
+      @for (testimonial of testimonials; track testimonial.name) {
+        <app-testimonial-card [testimonial]="testimonial" appScrollReveal />
+      }
+    </div>
+  </div>
+</section>

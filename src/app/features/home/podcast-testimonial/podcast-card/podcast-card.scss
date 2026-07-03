@@ -1,0 +1,80 @@
+.podcast-card {
+  @apply relative flex w-full max-w-[995px] flex-col overflow-hidden rounded-2xl bg-white transition-transform duration-300 ease-out lg:flex-row;
+
+  filter: drop-shadow(0px 4px 2px rgba(0, 0, 0, 0.25));
+
+  &:hover,
+  &:focus-within {
+    @apply -translate-y-2;
+  }
+
+  &__media {
+    // No fixed height on desktop: the row stretches (flex default align-items)
+    // to match whatever height the body's actual content needs.
+    //@apply relative h-64 w-full shrink-0 lg:w-[406px];
+      @apply relative w-full shrink-0 self-stretch lg:w-[406px];
+
+  }
+
+  &__image {
+    @apply object-cover;
+  }
+
+  &__body {
+    @apply flex flex-col items-start justify-center gap-8 p-8 text-left lg:p-14;
+  }
+
+  &__intro {
+    @apply flex flex-col items-start gap-2;
+  }
+
+  &__kicker {
+    @apply m-0 font-inter text-xl font-bold text-black;
+  }
+
+  // #58A807 (the brand green used on dark sections) only reaches ~3:1 against this
+  // card's white background, short of WCAG AA's 4.5:1 minimum for text. This
+  // darker shade keeps the same hue while passing contrast (~5.2:1).
+  &__title {
+    @apply m-0 mt-2 font-urbanist text-4xl font-bold text-[#467a00];
+  }
+
+  &__description {
+    @apply m-0 mt-3 font-inter text-xl font-normal leading-[32px] text-black;
+  }
+
+  &__actions {
+    @apply flex flex-wrap items-center gap-3.5;
+  }
+
+  // ntv-button only ships rounded-none/sm/md/lg/xl/full and token-based padding,
+  // neither of which lands on Figma's exact 16px radius / 24px-12px padding.
+  &__cta {
+    ::ng-deep .ntv-button {
+      @apply rounded-2xl px-6 py-3 transition-transform duration-200;
+
+      &:active {
+        @apply scale-95;
+      }
+    }
+  }
+
+  &__cta-icon {
+    @apply inline-block h-0 w-0 rotate-90 opacity-0 transition-all duration-200;
+  }
+
+  ::ng-deep .ntv-button:hover .podcast-card__cta-icon,
+  ::ng-deep .ntv-button:focus-visible .podcast-card__cta-icon,
+  ::ng-deep .ntv-button:active .podcast-card__cta-icon {
+    @apply ml-2 h-4 w-4 opacity-100;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+
+    &:hover,
+    &:focus-within {
+      transform: none;
+    }
+  }
+}
