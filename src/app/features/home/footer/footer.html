@@ -1,0 +1,118 @@
+<footer class="footer" id="contact">
+  <div class="footer__grid">
+    <div class="footer__brand" appScrollReveal>
+      <a href="#home" class="footer__logo-link" aria-label="N-Compass TV home">
+        <img ngSrc="images/nav/logo.png" width="1280" height="229" class="footer__logo" alt="N-Compass TV" />
+      </a>
+
+      <p class="footer__description">
+        Our indoor billboards are popular in communities throughout the country.
+        <br /><br />
+        From restaurants to gyms, doctor's offices to auto repair, you will be seen wherever your customers go!
+      </p>
+
+      <p class="footer__copyright">
+        © N-Compass TV 2026 |
+        <a class="footer__privacy-link" href="https://n-compass.tv/privacy-policy" target="_blank" rel="noopener">
+          Privacy Policy
+        </a>
+      </p>
+    </div>
+
+    <div class="footer__aside" appScrollReveal>
+      <ntv-button
+        class="footer__schedule-cta"
+        variant="ghost"
+        color="custom"
+        customColor="#7DC931"
+        rounded="xl"
+        size="lg"
+        fontSize="24px"
+        [shadow]="false"
+        [noFocusRing]="false"
+        (buttonClick)="openPhoneModal()"
+      >
+        Schedule A Call
+      </ntv-button>
+
+      <div class="footer__columns">
+        <div class="footer__column-group">
+          <div class="footer__column">
+            <p class="footer__heading">Contact</p>
+
+            <div class="footer__contact-list">
+              <a class="footer__contact-item" [href]="mapsHref" target="_blank" rel="noopener">
+                <svg class="footer__contact-icon" aria-hidden="true">
+                  <use href="icons/icon-sprite.svg#icon-location"></use>
+                </svg>
+                <span>{{ addressDisplay }}</span>
+              </a>
+
+              <button type="button" class="footer__contact-item" (click)="openPhoneModal()">
+                <svg class="footer__contact-icon" aria-hidden="true">
+                  <use href="icons/icon-sprite.svg#icon-call"></use>
+                </svg>
+                <span>{{ phoneDisplay }}</span>
+              </button>
+
+              <button type="button" class="footer__contact-item" (click)="openEmailModal()">
+                <svg class="footer__contact-icon" aria-hidden="true">
+                  <use href="icons/icon-sprite.svg#icon-mail"></use>
+                </svg>
+                <span>{{ emailDisplay }}</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="footer__column">
+            <p class="footer__heading">Follow Us</p>
+
+            <div class="footer__social-list">
+              @for (social of socialLinks; track social.href) {
+                <a
+                  class="footer__social-link"
+                  [href]="social.href"
+                  [attr.aria-label]="social.label"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <svg class="footer__social-icon" aria-hidden="true">
+                    <use [attr.href]="'icons/icon-sprite.svg#' + social.icon"></use>
+                  </svg>
+                </a>
+              }
+            </div>
+          </div>
+        </div>
+
+        <div class="footer__column footer__column--company">
+          <p class="footer__heading">Company</p>
+
+          <ul class="footer__links">
+            @for (link of companyLinks; track link.href) {
+              <li>
+                <a class="footer__link" [href]="link.href">{{ link.label }}</a>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-contact-modal
+    [isOpen]="isPhoneModalOpen()"
+    title="Call Us"
+    [value]="phoneDisplay"
+    [actions]="phoneActions"
+    (closed)="closePhoneModal()"
+  />
+
+  <app-contact-modal
+    [isOpen]="isEmailModalOpen()"
+    title="Email Us"
+    [value]="emailDisplay"
+    [actions]="emailActions"
+    (closed)="closeEmailModal()"
+  />
+</footer>

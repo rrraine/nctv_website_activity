@@ -1,0 +1,104 @@
+.footer {
+  @apply bg-[#000101] px-6 py-14 lg:px-[120px];
+
+  // w-full on the brand/aside children below computes against this row's own
+  // full width once it switches to flex-row, so without justify-between they'd
+  // both shrink-to-content and pack against the left edge, leaving the right
+  // side unbalanced. justify-between anchors brand to the left edge and aside
+  // to the right edge, matching the symmetric outer padding on both sides.
+  &__grid {
+    @apply mx-auto flex w-full max-w-[1440px] flex-col items-start gap-16 lg:flex-row lg:justify-between lg:gap-10;
+  }
+
+  &__brand {
+    @apply flex w-full max-w-[565px] flex-col items-start gap-10 lg:w-auto;
+  }
+
+  &__logo-link {
+    @apply inline-block rounded-sm transition-opacity duration-200 hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#7dc931];
+  }
+
+  &__logo {
+    @apply h-auto w-[280px];
+  }
+
+  &__description {
+    @apply m-0 font-inter text-xl font-normal leading-[38px] text-white;
+  }
+
+  &__copyright {
+    @apply m-0 font-inter text-lg font-normal leading-[32px] text-white;
+  }
+
+  &__privacy-link {
+    @apply text-white underline decoration-solid underline-offset-2 transition-colors duration-200 hover:text-[#7dc931];
+  }
+
+  &__aside {
+    @apply flex w-full flex-col items-start gap-9 lg:w-auto;
+  }
+
+  // ntv-button only ships rounded-none/sm/md/lg/xl/full and token-based padding,
+  // neither of which lands on Figma's exact 16px radius / 24px-12px padding.
+  &__schedule-cta {
+    ::ng-deep .ntv-button {
+      @apply rounded-2xl px-6 py-3 transition-transform duration-200;
+
+      &:active {
+        @apply scale-95;
+      }
+    }
+  }
+
+  &__columns {
+    @apply flex w-full flex-col gap-9 sm:flex-row sm:items-center sm:gap-10;
+  }
+
+  &__column-group {
+    @apply flex flex-col gap-8;
+  }
+
+  &__column {
+    @apply flex flex-col items-start gap-5;
+
+    &--company {
+      @apply self-start sm:self-center;
+    }
+  }
+
+  &__heading {
+    @apply m-0 font-inter text-xl font-normal uppercase tracking-wide text-white;
+  }
+
+  &__contact-list {
+    @apply flex flex-col items-start gap-4;
+  }
+
+  &__contact-item {
+    @apply flex cursor-pointer items-center gap-[19px] border-0 bg-transparent p-0 text-left font-inter text-sm font-normal text-white no-underline transition-colors duration-200 hover:text-[#7dc931] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7dc931];
+  }
+
+  &__contact-icon {
+    @apply h-6 w-6 shrink-0;
+  }
+
+  &__links {
+    @apply m-0 flex list-none flex-col items-start gap-4 p-0;
+  }
+
+  &__link {
+    @apply font-inter text-sm font-normal text-white no-underline transition-colors duration-200 hover:text-[#7dc931] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7dc931];
+  }
+
+  &__social-list {
+    @apply flex items-center gap-2;
+  }
+
+  &__social-link {
+    @apply flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#7dc931] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7dc931];
+  }
+
+  &__social-icon {
+    @apply h-5 w-5;
+  }
+}
