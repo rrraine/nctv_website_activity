@@ -38,7 +38,7 @@ yarn-error.log
 testem.log
 /typings
 __screenshots__/
-.npmrc
+#.npmrc
 
 # System files
 .DS_Store

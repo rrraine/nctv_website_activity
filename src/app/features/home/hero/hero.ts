@@ -67,6 +67,10 @@ export class Hero implements OnInit, OnDestroy {
   }
 
   /**
+   * @description alternative animation ()
+   */
+
+  /**
    * @description Resolves after the given number of milliseconds.
    * @param ms Delay in milliseconds.
    */
