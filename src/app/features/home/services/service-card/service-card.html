@@ -1,0 +1,16 @@
+<article class="service-card">
+  <img [ngSrc]="service().image" fill priority="false" class="service-card__image" alt="" />
+  <div class="service-card__overlay"></div>
+
+  <div class="service-card__content">
+    <h3 class="service-card__title">{{ service().title }}</h3>
+    <p class="service-card__description">{{ service().description }}</p>
+
+    <a class="service-card__cta" [href]="service().href">
+      <span class="service-card__cta-text">Learn More</span>
+      <svg class="service-card__cta-icon" aria-hidden="true">
+        <use href="icons/icon-sprite.svg#icon-arrow"></use>
+      </svg>
+    </a>
+  </div>
+</article>

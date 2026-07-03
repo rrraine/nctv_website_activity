@@ -1,0 +1,41 @@
+.service-carousel {
+  @apply relative flex w-full items-center gap-4;
+
+  &__track {
+    @apply flex flex-1 gap-[25px] overflow-x-auto px-1 py-2;
+
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__fab {
+    @apply hidden shrink-0 md:block;
+
+    ::ng-deep .ntv-button {
+      @apply flex h-[75px] w-[75px] items-center justify-center p-0 transition-transform duration-200;
+
+      &:hover {
+        @apply scale-105;
+      }
+
+      &:active {
+        @apply scale-95;
+      }
+    }
+  }
+
+  &__fab-icon {
+    @apply h-8 w-8 text-white;
+
+    &--prev {
+      @apply -rotate-90;
+    }
+
+    &--next {
+      @apply rotate-90;
+    }
+  }
+}

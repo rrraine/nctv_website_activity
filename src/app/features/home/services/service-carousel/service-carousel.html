@@ -1,0 +1,43 @@
+<div
+  class="service-carousel"
+  (pointerenter)="onInteractionStart()"
+  (pointerleave)="onInteractionEnd()"
+  (focusin)="onInteractionStart()"
+  (focusout)="onInteractionEnd()"
+>
+  <ntv-button
+    class="service-carousel__fab"
+    type="fabRoundedFull"
+    color="custom"
+    customColor="rgba(237, 246, 220, 0.15)"
+    [shadow]="false"
+    [noFocusRing]="false"
+    (buttonClick)="scrollByCard(-1)"
+  >
+    <span class="sr-only">Scroll services left</span>
+    <svg class="service-carousel__fab-icon service-carousel__fab-icon--prev" aria-hidden="true">
+      <use href="icons/icon-sprite.svg#icon-arrow"></use>
+    </svg>
+  </ntv-button>
+
+  <div #track class="service-carousel__track">
+    @for (service of loopedServices(); track $index) {
+      <app-service-card [service]="service" class="service-carousel__item" />
+    }
+  </div>
+
+  <ntv-button
+    class="service-carousel__fab"
+    type="fabRoundedFull"
+    color="custom"
+    customColor="rgba(237, 246, 220, 0.15)"
+    [shadow]="false"
+    [noFocusRing]="false"
+    (buttonClick)="scrollByCard(1)"
+  >
+    <span class="sr-only">Scroll services right</span>
+    <svg class="service-carousel__fab-icon service-carousel__fab-icon--next" aria-hidden="true">
+      <use href="icons/icon-sprite.svg#icon-arrow"></use>
+    </svg>
+  </ntv-button>
+</div>

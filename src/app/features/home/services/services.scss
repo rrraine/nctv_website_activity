@@ -1,0 +1,48 @@
+.services {
+  @apply flex flex-col items-center gap-9 bg-white px-6 pb-9 pt-14 text-center;
+
+  // #58A807 (the brand green used on dark sections) only reaches ~3:1 against this
+  // section's white background, short of WCAG AA's 4.5:1 minimum for text. This
+  // darker shade keeps the same hue while passing contrast (~5.2:1).
+  --Accent-Color-Main: #467a00;
+
+  &__eyebrow {
+    @apply m-0 font-urbanist text-4xl font-bold text-black;
+  }
+
+  &__heading {
+    @apply m-0 max-w-[853px] font-urbanist text-[40px] font-bold leading-tight text-[#4a9400] lg:text-[54px];
+  }
+
+  &__tabs {
+    @apply w-full max-w-[600px];
+
+    ::ng-deep .ntv-tabs {
+      @apply border-b-0;
+    }
+
+    ::ng-deep .ntv-tabs__tab {
+      @apply w-auto min-w-0 flex-1 font-inter text-base font-light text-[#616767] opacity-100;
+    }
+
+    ::ng-deep .ntv-tabs__tab--active {
+      @apply font-normal text-[#467a00];
+    }
+  }
+
+  &__carousel {
+    @apply w-full max-w-[1541px];
+  }
+
+  &__closing {
+    @apply flex max-w-[994px] flex-col font-inter text-2xl text-black;
+  }
+
+  &__closing-lead {
+    @apply m-0 font-bold leading-[34px];
+  }
+
+  &__closing-text {
+    @apply m-0 mt-6 font-normal leading-[34px];
+  }
+}

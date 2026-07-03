@@ -1,0 +1,28 @@
+<section class="services" id="services">
+  <app-section-tag label="Services" tone="muted" appScrollReveal />
+
+  <p class="services__eyebrow" appScrollReveal>Go Beyond the Screens</p>
+  <h2 id="services-heading" class="services__heading" appScrollReveal>
+    A Full-Service Digital Marketing Agency — Under Your Name
+  </h2>
+
+  <ntv-tabs
+    class="services__tabs"
+    appScrollReveal
+    [tabs]="tabs"
+    [activeIndex]="activeIndex()"
+    (tabChange)="onTabChange($event)"
+  />
+
+  <app-service-carousel class="services__carousel" appScrollReveal [services]="activeServices()" />
+
+  <div class="services__closing" appScrollReveal>
+    <p class="services__closing-lead">
+      Don't stop at billboards. We handle the work, you own the client relationships.
+    </p>
+    <p class="services__closing-text">
+      From local SEO to streaming ads, we power a complete multichannel offering for your business clients —
+      including monthly reporting and client check-ins.
+    </p>
+  </div>
+</section>
