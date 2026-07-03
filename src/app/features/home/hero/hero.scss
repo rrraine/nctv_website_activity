@@ -1,0 +1,81 @@
+.hero {
+  @apply relative isolate flex min-h-[36rem] flex-col justify-center overflow-hidden bg-black sm:min-h-[46rem] lg:min-h-[56rem];
+
+  &__background {
+    @apply object-cover;
+  }
+
+  &__overlay {
+    @apply pointer-events-none absolute inset-0;
+
+    background: linear-gradient(
+      to bottom,
+      rgba(180, 180, 180, 0.35) 0%,
+      rgba(29, 29, 29, 0.75) 20.673%,
+      #000000 100%
+    );
+  }
+
+  // The nav bar is fixed to the viewport (see nav-bar.scss), so it no longer
+  // occupies flow space here. This padding clears it manually instead.
+  &__content {
+    @apply relative z-10 mx-auto flex w-full max-w-[947px] flex-col items-center gap-[42px] px-6 pb-12 pt-16 text-center;
+  }
+
+  &__heading {
+    @apply m-0 w-full font-urbanist font-black uppercase text-white;
+
+    // Fluid font-size instead of a fixed px value + width:max-content hack: scales
+    // smoothly between breakpoints so the line never overflows on narrow screens
+    // yet still fits on one line at desktop widths without forcing an unwanted wrap.
+    font-size: clamp(2.25rem, 5vw + 1.2rem, 4.6875rem);
+    line-height: 1.1;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  &__heading-line {
+    @apply block;
+
+    &--accent {
+      @apply text-[#74e800];
+
+      // Was a fixed 60px, which only matched the old fixed 75px font-size. Using a
+      // unitless multiplier keeps the same visual ratio as the heading scales.
+      line-height: 0.8;
+    }
+  }
+
+  &__text {
+    @apply m-0 font-inter text-[26px] font-normal text-white;
+  }
+
+  // ntv-button only ships rounded-none/sm/md/lg/xl/full and token-based padding,
+  // neither of which lands on Figma's exact 16px radius / 24px-12px padding.
+  &__cta {
+    ::ng-deep .ntv-button {
+      @apply rounded-2xl px-6 py-3 transition-transform duration-200;
+
+      &:active {
+        @apply scale-95;
+      }
+    }
+  }
+
+  &__cta-icon {
+    @apply inline-block h-0 w-0 rotate-90 opacity-0 transition-all duration-200;
+  }
+
+  ::ng-deep .ntv-button:hover .hero__cta-icon,
+  ::ng-deep .ntv-button:focus-visible .hero__cta-icon,
+  ::ng-deep .ntv-button:active .hero__cta-icon {
+    @apply ml-2 h-5 w-5 opacity-100;
+  }
+
+  &__waves {
+    @apply pointer-events-none absolute inset-x-0 bottom-0 h-28 overflow-hidden;
+  }
+
+  &__wave {
+    @apply object-cover;
+  }
+}

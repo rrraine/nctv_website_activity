@@ -1,0 +1,44 @@
+<section class="hero" id="home" aria-labelledby="hero-heading">
+  <img ngSrc="images/hero/hero-background.png" fill priority alt="" class="hero__background" />
+  <div class="hero__overlay"></div>
+
+  <div class="hero__content">
+    <h1
+      id="hero-heading"
+      class="hero__heading"
+      aria-label="COMMUNITY FOCUSED INDOOR DIGITAL BILLBOARDS"
+    >
+      <span class="hero__heading-line" aria-hidden="true">{{ typedLine1() }}</span>
+      <span class="hero__heading-line hero__heading-line--accent" aria-hidden="true">{{ typedLine2() }}</span>
+    </h1>
+
+    <p class="hero__text">
+      N-Compass TV’s business model boasts high revenue potential and low startup costs, making it an
+      attractive option for aspiring entrepreneurs.
+    </p>
+
+    <p class="hero__text">Ready to start your own Digital Marketing Company?</p>
+
+    <ntv-button
+      class="hero__cta"
+      variant="ghost"
+      color="custom"
+      customColor="#7DC931"
+      rounded="xl"
+      size="lg"
+      fontSize="24px"
+      [shadow]="false"
+      [noFocusRing]="false"
+      (buttonClick)="onLearnMore()"
+    >
+      <span class="hero__cta-text">Learn More</span>
+      <svg class="hero__cta-icon" aria-hidden="true">
+        <use href="icons/icon-sprite.svg#icon-arrow"></use>
+      </svg>
+    </ntv-button>
+  </div>
+
+  <div class="hero__waves" aria-hidden="true">
+    <img ngSrc="images/hero/wave-4.png" fill priority="false" class="hero__wave" alt="" />
+  </div>
+</section>
