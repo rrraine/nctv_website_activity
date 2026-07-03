@@ -1,0 +1,30 @@
+<div
+  class="splash-screen"
+  [class.splash-screen--exit]="phase() === 'exit'"
+  role="presentation"
+  aria-hidden="true"
+  (animationend)="onFadeOutEnd()"
+>
+  <img
+    ngSrc="n-compass-logo.png"
+    width="64"
+    height="64"
+    priority
+    alt=""
+    class="splash-screen__compass"
+    [class.splash-screen__compass--hidden]="phase() !== 'spin'"
+    (animationend)="onSpinEnd($event)"
+    (transitionend)="onCompassFadeEnd($event)"
+  />
+
+  <img
+    ngSrc="images/nav/logo.png"
+    width="240"
+    height="43"
+    priority
+    alt=""
+    class="splash-screen__wordmark"
+    [class.splash-screen__wordmark--visible]="phase() === 'reveal' || phase() === 'exit'"
+    (animationend)="onRevealEnd($event)"
+  />
+</div>

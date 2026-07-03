@@ -1,0 +1,89 @@
+@keyframes splash-compass-spin {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(0deg);
+  }
+
+  35% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+@keyframes splash-wordmark-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+
+  80% {
+    transform: scale(0.94);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes splash-fade-out {
+  0%,
+  30% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+}
+
+.splash-screen {
+  @apply fixed inset-0 z-[999] grid place-items-center bg-[#060f24];
+
+  &--exit {
+    animation: splash-fade-out 650ms ease-in forwards;
+  }
+
+  &__compass {
+    @apply h-16 w-16 object-contain;
+
+    grid-area: 1 / 1;
+    // No `forwards`: a completed animation's fill value would keep overriding
+    // the plain opacity/transform below it, since animated properties beat
+    // ordinary declarations even after the animation ends. Reverting to the
+    // unanimated state is visually identical here (a full 360° spin looks
+    // the same as no rotation), so the `--hidden` transition below can take
+    // over cleanly once the spin finishes.
+    animation: splash-compass-spin 800ms cubic-bezier(0.65, 0, 0.35, 1);
+
+    &--hidden {
+      opacity: 0;
+      transform: scale(0.7);
+      transition:
+        opacity 300ms ease-in,
+        transform 300ms ease-in;
+    }
+  }
+
+  &__wordmark {
+    @apply h-[43px] w-[240px] object-contain opacity-0;
+
+    grid-area: 1 / 1;
+
+    &--visible {
+      animation: splash-wordmark-pop 550ms ease-out forwards;
+    }
+  }
+}

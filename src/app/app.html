@@ -1,7 +1,13 @@
-<app-nav-bar activeHref="#home" />
-<app-hero />
-<app-about />
-<app-services />
-<app-podcast-testimonial />
-<app-footer />
-<router-outlet />
+@if (showSplash()) {
+  <app-splash-screen (finished)="showSplash.set(false)" />
+}
+
+<div [attr.inert]="showSplash() ? '' : null">
+  <app-nav-bar activeHref="#home" />
+  <app-hero />
+  <app-about />
+  <app-services />
+  <app-podcast-testimonial />
+  <app-footer />
+  <router-outlet />
+</div>
