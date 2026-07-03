@@ -1,0 +1,78 @@
+.about {
+  @apply flex flex-col items-center gap-16 bg-[#000101] px-6 py-20 text-center lg:gap-[61px] lg:px-8;
+
+  &__block {
+    @apply flex w-full max-w-[994px] flex-col items-center gap-8;
+  }
+
+  &__heading {
+    @apply m-0 font-urbanist text-4xl font-semibold text-[#7dc931];
+  }
+
+  &__row {
+    @apply grid w-full grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-8;
+  }
+
+  &__copy {
+    @apply flex flex-col items-start gap-7 text-left;
+  }
+
+  &__text {
+    @apply m-0 font-inter text-base font-normal leading-[32px] text-white;
+
+    &--wide {
+      @apply max-w-[978px] text-center text-lg leading-[32px];
+    }
+  }
+
+  &__highlight {
+    @apply font-bold not-italic text-[#7dc931];
+  }
+
+  &__image {
+    @apply h-auto w-full rounded-2xl object-cover;
+
+    box-shadow: 0px 3px 12px 0px rgba(255, 255, 255, 0.25);
+  }
+
+  &__video {
+    @apply w-full;
+  }
+
+  &__stats {
+    @apply m-0 flex w-full max-w-[1112px] list-none flex-wrap items-center justify-center gap-x-12 gap-y-8 p-0;
+  }
+
+  &__stat {
+    @apply flex items-center gap-2;
+  }
+
+  &__stat-value {
+    @apply m-0 font-inter text-[40px] font-semibold leading-none text-white lg:text-[64px];
+  }
+
+  &__stat-label {
+    @apply m-0 w-36 text-left font-inter text-lg font-semibold leading-snug text-white lg:text-xl;
+  }
+
+  // ntv-button's built-in size tokens don't hit Figma's exact 24px/12px padding.
+  &__cta {
+    ::ng-deep .ntv-button {
+      @apply px-6 py-3 transition-transform duration-200;
+
+      &:active {
+        @apply scale-95;
+      }
+    }
+  }
+
+  &__cta-icon {
+    @apply inline-block h-0 w-0 rotate-90 opacity-0 transition-all duration-200;
+  }
+
+  ::ng-deep .ntv-button:hover .about__cta-icon,
+  ::ng-deep .ntv-button:focus-visible .about__cta-icon,
+  ::ng-deep .ntv-button:active .about__cta-icon {
+    @apply ml-2 h-4 w-4 opacity-100;
+  }
+}

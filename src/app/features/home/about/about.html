@@ -1,0 +1,106 @@
+<section class="about" id="about">
+  <app-section-tag label="About" appScrollReveal />
+
+  <div class="about__block">
+    <h2 id="about-model-heading" class="about__heading" appScrollReveal>Our Model</h2>
+
+    <div class="about__row" aria-labelledby="about-model-heading" appScrollReveal>
+      <div class="about__copy">
+        <p class="about__text">
+          Our dealership model empowers you to own and operate your own digital marketing business.
+          Specializing in <strong class="about__highlight">indoor digital billboards</strong> and a
+          comprehensive suite of digital marketing services, we give you the tools to become the marketing
+          expert in your community.
+        </p>
+
+        <p class="about__text">
+          Our business opportunity allows you to develop a multi-stream revenue model.
+        </p>
+
+        <ntv-button
+          class="about__cta"
+          variant="ghost"
+          color="custom"
+          customColor="#7DC931"
+          rounded="xl"
+          size="md"
+          fontSize="16px"
+          [shadow]="false"
+          [noFocusRing]="false"
+          (buttonClick)="onLearnMore()"
+        >
+          <span class="about__cta-text">Learn More</span>
+          <svg class="about__cta-icon" aria-hidden="true">
+            <use href="icons/icon-sprite.svg#icon-arrow"></use>
+          </svg>
+        </ntv-button>
+      </div>
+
+      <img
+        ngSrc="images/about/our-model.png"
+        width="700"
+        height="441"
+        class="about__image"
+        alt="N-Compass TV digital billboard displays mounted inside a local business"
+      />
+    </div>
+  </div>
+
+  <div class="about__block">
+    <h2 id="about-journey-heading" class="about__heading" appScrollReveal>Our Journey</h2>
+
+    <div class="about__row" aria-labelledby="about-journey-heading" appScrollReveal>
+      <app-youtube-embed
+        class="about__video"
+        videoId="ES-QrquEH8M"
+        title="N-Compass TV's journey"
+      />
+
+      <div class="about__copy">
+        <p class="about__text">
+          Since its inception in 2008, N-Compass TV has been at the forefront of transforming
+          <strong class="about__highlight">community-based advertising</strong> through its network of
+          owner-operated indoor digital billboards. By establishing a shared interactive local TV network
+          across numerous communities nationwide, N-Compass TV has firmly positioned itself as a leader in
+          the digital media sector.
+        </p>
+
+        <ntv-button
+          class="about__cta"
+          variant="ghost"
+          color="custom"
+          customColor="#7DC931"
+          rounded="xl"
+          size="md"
+          fontSize="16px"
+          [shadow]="false"
+          [noFocusRing]="false"
+          (buttonClick)="onLearnMore()"
+        >
+          <span class="about__cta-text">Learn More</span>
+          <svg class="about__cta-icon" aria-hidden="true">
+            <use href="icons/icon-sprite.svg#icon-arrow"></use>
+          </svg>
+        </ntv-button>
+      </div>
+    </div>
+
+    <p class="about__text about__text--wide" appScrollReveal>
+      The <strong class="about__highlight">Digital Out-Of-Home (DOOH)</strong> advertising sector is
+      experiencing rapid growth, and N-Compass TV is leading this trend with its distinctive dealer-based
+      approach, empowering entrepreneurial growth and fostering community-focused advertising.
+    </p>
+  </div>
+
+  <ul class="about__stats" #statsList appScrollReveal>
+    @for (stat of stats; track stat.label; let i = $index) {
+      <li class="about__stat">
+        <p class="about__stat-value">
+          <span aria-hidden="true">{{ displayedValues()[i] }}{{ stat.suffix }}</span>
+          <span class="sr-only">{{ stat.value }}{{ stat.suffix }}</span>
+        </p>
+        <p class="about__stat-label">{{ stat.label }}</p>
+      </li>
+    }
+  </ul>
+</section>
